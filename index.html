@@ -2,568 +2,1124 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Happy Birthday Wable ❤️</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
 
-body{
-font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#ff5f8f,#9b5de5);
-color:white;
-overflow-x:hidden;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
+body{
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#ff5f8f,#9b5de5);
+    color:white;
+    overflow-x:hidden;
+}
+
+/* =========================
+   SCREENS
+========================= */
+
 .screen{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:25px;
-text-align:center;
-position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+    text-align:center;
+    position:relative;
 }
 
 .card{
-width:min(720px,95%);
-padding:38px 25px;
-border-radius:30px;
-background:rgba(255,255,255,.16);
-backdrop-filter:blur(12px);
-box-shadow:0 20px 60px rgba(0,0,0,.25);
-position:relative;
-z-index:10;
+    width:min(720px,95%);
+    padding:38px 25px;
+    border-radius:30px;
+    background:rgba(255,255,255,.16);
+    backdrop-filter:blur(12px);
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
+    position:relative;
+    z-index:10;
 }
 
-.hidden{display:none!important}
+.hidden{
+    display:none !important;
+}
+
+/* =========================
+   TEXT
+========================= */
 
 h1{
-font-size:clamp(40px,9vw,70px);
-margin-bottom:15px;
+    font-size:clamp(40px,9vw,70px);
+    margin-bottom:15px;
 }
 
 h2{
-font-size:clamp(28px,6vw,46px);
-margin-bottom:20px;
+    font-size:clamp(28px,6vw,46px);
+    margin-bottom:20px;
 }
 
 p{
-font-size:18px;
-line-height:1.7;
+    font-size:18px;
+    line-height:1.7;
 }
+
+/* =========================
+   BUTTONS
+========================= */
 
 button{
-border:0;
-background:white;
-color:#ff3d70;
-padding:15px 28px;
-border-radius:50px;
-font-size:17px;
-font-weight:bold;
-margin:15px 5px;
-cursor:pointer;
-box-shadow:0 8px 25px rgba(0,0,0,.25);
+    border:0;
+    background:white;
+    color:#ff3d70;
+    padding:15px 28px;
+    border-radius:50px;
+    font-size:17px;
+    font-weight:bold;
+    margin:15px 5px;
+    cursor:pointer;
+    box-shadow:0 8px 25px rgba(0,0,0,.25);
+    transition:transform .2s ease;
 }
 
-button:hover{transform:scale(1.06)}
+button:hover{
+    transform:scale(1.06);
+}
+
+button:active{
+    transform:scale(.96);
+}
+
+/* =========================
+   GALLERY
+========================= */
 
 .gallery{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:15px;
-margin:25px 0;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    margin:25px 0;
 }
 
 .gallery img{
-width:100%;
-height:210px;
-object-fit:cover;
-border-radius:20px;
-border:4px solid white;
+    width:100%;
+    height:210px;
+    object-fit:cover;
+    border-radius:20px;
+    border:4px solid white;
 }
 
 @media(max-width:600px){
-.gallery{grid-template-columns:1fr}
-.gallery img{height:260px}
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .gallery img{
+        height:260px;
+    }
 }
 
-/* balloons */
+/* =========================
+   BALLOONS
+========================= */
+
 .balloon{
-position:fixed;
-bottom:-130px;
-width:58px;
-height:72px;
-border-radius:50%;
-z-index:20;
-cursor:pointer;
-animation:rise 9s linear forwards;
-box-shadow:inset -8px -8px 15px rgba(0,0,0,.15);
+    position:fixed;
+    bottom:-130px;
+    width:58px;
+    height:72px;
+    border-radius:50%;
+    z-index:20;
+    cursor:pointer;
+
+    animation:rise 9s linear forwards;
+
+    box-shadow:
+        inset -8px -8px 15px rgba(0,0,0,.15),
+        0 5px 15px rgba(0,0,0,.15);
+
+    transition:transform .2s ease;
+}
+
+.balloon:hover{
+    transform:scale(1.12);
 }
 
 .balloon:before{
-content:"";
-position:absolute;
-bottom:-7px;
-left:22px;
-border-left:7px solid transparent;
-border-right:7px solid transparent;
-border-top:12px solid currentColor;
+    content:"";
+    position:absolute;
+    bottom:-7px;
+    left:22px;
+
+    border-left:7px solid transparent;
+    border-right:7px solid transparent;
+    border-top:12px solid currentColor;
 }
 
 .balloon:after{
-content:"";
-position:absolute;
-width:2px;
-height:75px;
-background:rgba(255,255,255,.8);
-left:50%;
-top:70px;
+    content:"";
+    position:absolute;
+
+    width:2px;
+    height:75px;
+
+    background:rgba(255,255,255,.8);
+
+    left:50%;
+    top:70px;
 }
 
 @keyframes rise{
-0%{transform:translateY(0) rotate(-6deg)}
-50%{transform:translateY(-55vh) rotate(7deg)}
-100%{transform:translateY(-125vh) rotate(-5deg)}
+
+    0%{
+        transform:translateY(0) rotate(-6deg);
+    }
+
+    50%{
+        transform:translateY(-55vh) rotate(7deg);
+    }
+
+    100%{
+        transform:translateY(-125vh) rotate(-5deg);
+    }
 }
 
-/* popup */
+/* =========================
+   POPUP
+========================= */
+
 .popup{
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.68);
-z-index:1000;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:20px;
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.68);
+
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
 }
 
 .popupBox{
-background:white;
-color:#ff3d70;
-width:min(500px,95%);
-padding:35px 25px;
-border-radius:30px;
-text-align:center;
-animation:pop .4s ease;
+    background:white;
+    color:#ff3d70;
+
+    width:min(500px,95%);
+
+    padding:35px 25px;
+
+    border-radius:30px;
+
+    text-align:center;
+
+    animation:pop .4s ease;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
 }
 
 .popupBox p{
-color:#555;
-margin:15px 0;
+    color:#555;
+    margin:15px 0;
 }
 
 @keyframes pop{
-from{transform:scale(.5);opacity:0}
-to{transform:scale(1);opacity:1}
+
+    from{
+        transform:scale(.5);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
 }
 
-/* confetti */
+/* =========================
+   CONFETTI
+========================= */
+
 .confetti{
-position:fixed;
-top:-20px;
-width:9px;
-height:17px;
-z-index:2000;
-animation:fall 3s linear forwards;
+    position:fixed;
+    top:-20px;
+
+    width:9px;
+    height:17px;
+
+    z-index:2000;
+
+    animation:fall 3s linear forwards;
 }
 
 @keyframes fall{
-to{
-transform:translateY(110vh) rotate(720deg);
-opacity:0;
-}
+
+    to{
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+
+        opacity:0;
+    }
 }
 
+/* =========================
+   HEARTS
+========================= */
+
 .heart{
-position:fixed;
-bottom:-40px;
-z-index:5;
-animation:heartUp 5s linear forwards;
-pointer-events:none;
+    position:fixed;
+    bottom:-40px;
+
+    z-index:5;
+
+    animation:heartUp 5s linear forwards;
+
+    pointer-events:none;
 }
 
 @keyframes heartUp{
-to{
-transform:translateY(-110vh) rotate(360deg);
-opacity:0;
-}
+
+    to{
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
+        opacity:0;
+    }
 }
 
+/* =========================
+   TYPING
+========================= */
+
 .typing{
-min-height:80px;
-margin:20px auto;
+    min-height:80px;
+    margin:20px auto;
 }
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .card{
+        padding:30px 18px;
+    }
+
+    p{
+        font-size:16px;
+    }
+
+    button{
+        font-size:16px;
+        padding:14px 23px;
+    }
+
+    .balloon{
+        width:50px;
+        height:64px;
+    }
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- 1 -->
+
+<!-- =====================================================
+     SCREEN 1
+===================================================== -->
+
 <section class="screen" id="s1">
-<div class="card">
-<div style="font-size:75px">🎁</div>
-<h1>Hey Sahil! ❤️</h1>
-<p>
-I have a little surprise for you...
-<br>
-But first, you have to click here. 😊
-</p>
 
-<button onclick="startBirthday()">💝 Click Here</button>
-</div>
+    <div class="card">
+
+        <div style="font-size:75px">
+            🎁
+        </div>
+
+        <h1>
+            Hey Wable! ❤️
+        </h1>
+
+        <p>
+            I have a little surprise for you...
+            <br>
+            But first, you have to click here. 😊
+        </p>
+
+        <button onclick="startBirthday()">
+            💝 Click Here
+        </button>
+
+    </div>
+
 </section>
 
 
-<!-- 2 -->
+
+<!-- =====================================================
+     SCREEN 2
+===================================================== -->
+
 <section class="screen hidden" id="s2">
-<div class="card">
-<div style="font-size:65px">🎈🎈🎈</div>
 
-<h1>Happy Birthday! 🎂</h1>
-<h2>Sahil ❤️</h2>
+    <div class="card">
 
-<div class="typing" id="typing"></div>
+        <div style="font-size:65px">
+            🎈🎈🎈
+        </div>
 
-<p>
-There are some little messages waiting for you...
-<br>
-<strong>Click the balloons! 🎈</strong>
-</p>
+        <h1>
+            Happy Birthday! 🎂
+        </h1>
 
-<button onclick="showBalloons()">🎈 See Your Messages</button>
-</div>
+        <h2>
+            Wable ❤️
+        </h2>
+
+        <div
+            class="typing"
+            id="typing">
+        </div>
+
+        <p>
+            There are some little messages waiting for you...
+            <br>
+            <strong>
+                Click the balloons! 🎈
+            </strong>
+        </p>
+
+        <button onclick="showBalloons()">
+            🎈 See Your Messages
+        </button>
+
+    </div>
+
 </section>
 
 
-<!-- 3 -->
+
+<!-- =====================================================
+     SCREEN 3
+===================================================== -->
+
 <section class="screen hidden" id="s3">
-<div class="card">
 
-<h2>🎈 Messages For You ❤️</h2>
+    <div class="card">
 
-<p>
-Every balloon has a little message.
-<br>
-Tap a balloon to open it. 💌
-</p>
+        <h2>
+            🎈 Messages For You ❤️
+        </h2>
 
-<button onclick="showPhotos()">📸 Continue</button>
+        <p>
+            Every balloon has a little message.
+            <br>
+            Tap a balloon to open it. 💌
+        </p>
 
-</div>
+        <button onclick="showPhotos()">
+            📸 Continue
+        </button>
+
+    </div>
+
 </section>
 
 
-<!-- 4 -->
+
+<!-- =====================================================
+     SCREEN 4
+===================================================== -->
+
 <section class="screen hidden" id="s4">
-<div class="card">
 
-<h2>📸 Our Memories ❤️</h2>
+    <div class="card">
 
-<p>Five special memories, just for you.</p>
+        <h2>
+            📸 Our Memories ❤️
+        </h2>
 
-<div class="gallery">
+        <p>
+            Five special memories, just for you.
+        </p>
 
-<img src="IMG-20230912-WA0004.jpg" alt="Memory 1">
-<img src="IMG-20260212-WA0050.jpg" alt="Memory 2">
-<img src="IMG-20260803-WA0007.jpg" alt="Memory 3">
-<img src="IMG_7203.JPG" alt="Memory 4">
-<img src="IMG_7660.JPG" alt="Memory 5">
+        <div class="gallery">
 
-</div>
+            <img
+                src="IMG-20230912-WA0004.jpg"
+                alt="Memory 1">
 
-<button onclick="finalScreen()">🎂 One Last Surprise</button>
+            <img
+                src="IMG-20260212-WA0050.jpg"
+                alt="Memory 2">
 
-</div>
+            <img
+                src="IMG-20260803-WA0007.jpg"
+                alt="Memory 3">
+
+            <img
+                src="IMG_7203.JPG"
+                alt="Memory 4">
+
+            <img
+                src="IMG_7660.JPG"
+                alt="Memory 5">
+
+        </div>
+
+        <button onclick="finalScreen()">
+            🎂 One Last Surprise
+        </button>
+
+    </div>
+
 </section>
 
 
-<!-- 5 -->
+
+<!-- =====================================================
+     SCREEN 5
+===================================================== -->
+
 <section class="screen hidden" id="s5">
-<div class="card">
 
-<div style="font-size:75px">🎂</div>
+    <div class="card">
 
-<h1>Happy Birthday ❤️</h1>
+        <div style="font-size:75px">
+            🎂
+        </div>
 
-<h2>Sahil! 🥳</h2>
+        <h1>
+            Happy Birthday ❤️
+        </h1>
 
-<p>
-May your life always be filled with happiness,
-love, laughter and beautiful moments.
-<br><br>
-Keep smiling and keep shining. ❤️
-<br><br>
-You deserve the very best.
-</p>
+        <h2>
+            Sahil! 🥳
+        </h2>
 
-<button onclick="celebrate()">🎉 Celebrate!</button>
+        <p>
+            May your life always be filled with happiness,
+            love, laughter and beautiful moments.
 
-<p style="margin-top:20px;font-size:15px">
-Made with ❤️ specially for you.
-</p>
+            <br><br>
 
-</div>
+            Keep smiling and keep shining. ❤️
+
+            <br><br>
+
+            You deserve the very best.
+        </p>
+
+        <button onclick="celebrate()">
+            🎉 Celebrate!
+        </button>
+
+        <p
+            style="
+                margin-top:20px;
+                font-size:15px;
+            "
+        >
+            Made with ❤️ specially for you.
+        </p>
+
+    </div>
+
 </section>
 
 
-<!-- POPUP -->
-<div class="popup hidden" id="popup">
-<div class="popupBox">
 
-<div style="font-size:65px" id="popupEmoji">💖</div>
+<!-- =====================================================
+     POPUP
+===================================================== -->
 
-<h2 id="popupTitle">A Message For You</h2>
+<div
+    class="popup hidden"
+    id="popup"
+>
 
-<p id="popupText"></p>
+    <div class="popupBox">
 
-<button onclick="closePopup()">❤️ Continue</button>
+        <div
+            style="font-size:65px"
+            id="popupEmoji"
+        >
+            💖
+        </div>
+
+        <h2 id="popupTitle">
+            A Message For You
+        </h2>
+
+        <p id="popupText">
+        </p>
+
+        <button onclick="closePopup()">
+            ❤️ Continue
+        </button>
+
+    </div>
 
 </div>
-</div>
+
 
 
 <script>
 
-const messages=[
-{
-emoji:"❤️",
-title:"A Little Message",
-text:"You are genuinely special. Never forget how much happiness you bring to the people around you. ❤️"
-},
-{
-emoji:"💖",
-title:"Keep Smiling",
-text:"No matter what life brings, keep that beautiful smile alive. You look best when you're happy! 😊"
-},
-{
-emoji:"✨",
-title:"Always Shine",
-text:"Keep chasing your dreams that is me hehe and never stop believing in yourself. You have so much ahead of you! ✨"
-},
-{
-emoji:"🥳",
-title:"Today Is Your Day",
-text:"Forget all the worries today. Eat, laugh, celebrate and enjoy every single moment of your birthday Wable! 🎂"
-},
-{
-emoji:"💝",
-title:"One Last Thing",
-text:"I hope this little surprise makes you smile. Wishing you a beautiful year filled with unforgettable memories Officer. ❤️"
-}
+
+/* =====================================================
+   MESSAGES
+===================================================== */
+
+const messages = [
+
+    {
+        emoji:"❤️",
+
+        title:"A Little Message",
+
+        text:
+        "You are genuinely special. Never forget how much happiness you bring to the people around you. ❤️"
+    },
+
+
+    {
+        emoji:"💖",
+
+        title:"Keep Smiling",
+
+        text:
+        "No matter what life brings, keep that beautiful smile alive. You look best when you're happy! 😊"
+    },
+
+
+    {
+        emoji:"✨",
+
+        title:"Always Shine",
+
+        text:
+        "Keep chasing your dreams that is me hehe and never stop believing in yourself. You have so much ahead of you! ✨"
+    },
+
+
+    {
+        emoji:"🥳",
+
+        title:"Today Is Your Day",
+
+        text:
+        "Forget all the worries today. Eat, laugh, celebrate and enjoy every single moment of your birthday Wable! 🎂"
+    },
+
+
+    {
+        emoji:"💝",
+
+        title:"One Last Thing",
+
+        text:
+        "I hope this little surprise makes you smile. Wishing you a beautiful year filled with unforgettable memories Officer. ❤️"
+    }
+
 ];
 
-let balloonIndex=0;
 
 
-/* screen navigation */
+/* =====================================================
+   SCREEN NAVIGATION
+===================================================== */
+
 function go(id){
-document.querySelectorAll(".screen").forEach(x=>x.classList.add("hidden"));
-document.getElementById(id).classList.remove("hidden");
-window.scrollTo(0,0);
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(function(screen){
+
+            screen.classList.add("hidden");
+
+        });
+
+
+    const target =
+        document.getElementById(id);
+
+
+    if(target){
+
+        target.classList.remove("hidden");
+
+    }
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
 }
 
 
-/* first button */
+
+/* =====================================================
+   FIRST BUTTON
+===================================================== */
+
 function startBirthday(){
 
-go("s2");
+    go("s2");
 
-confetti(70);
-hearts(12);
+    confetti(70);
 
-typeText(
-"Today is your special day! May it be full of happiness, laughter, love and beautiful surprises. ❤️"
-);
+    hearts(12);
+
+
+    typeText(
+        "Today is your special day! May it be full of happiness, laughter, love and beautiful surprises. ❤️"
+    );
+
 }
 
 
-/* typing */
+
+/* =====================================================
+   TYPING EFFECT
+===================================================== */
+
 function typeText(text){
 
-let el=document.getElementById("typing");
-el.innerHTML="";
-let i=0;
+    const el =
+        document.getElementById("typing");
 
-function write(){
-if(i<text.length){
-el.innerHTML+=text[i++];
-setTimeout(write,35);
+
+    el.innerHTML = "";
+
+
+    let i = 0;
+
+
+    function write(){
+
+        if(i < text.length){
+
+            el.innerHTML += text[i];
+
+            i++;
+
+            setTimeout(write,35);
+
+        }
+
+    }
+
+
+    write();
+
 }
-}
-
-write();
-}
 
 
-/* balloons page */
+
+/* =====================================================
+   BALLOONS PAGE
+===================================================== */
+
 function showBalloons(){
 
-go("s3");
+    go("s3");
 
-setTimeout(()=>{
-createMessageBalloons();
-},300);
+
+    setTimeout(function(){
+
+        createMessageBalloons();
+
+    },300);
 
 }
 
 
-/* create clickable balloons */
+
+/* =====================================================
+   CREATE MESSAGE BALLOONS
+===================================================== */
+
 function createMessageBalloons(){
 
-for(let i=0;i<5;i++){
+    /* Remove old balloons first */
 
-let b=document.createElement("div");
+    document
+        .querySelectorAll(".balloon")
+        .forEach(function(balloon){
 
-b.className="balloon";
+            balloon.remove();
 
-let colors=[
-"#ff1744",
-"#ff9800",
-"#00c853",
-"#2979ff",
-"#d500f9"
-];
+        });
 
-b.style.background=colors[i];
-b.style.color=colors[i];
 
-b.style.left=(8+i*19)+"%";
+    const colors = [
 
-b.style.animationDelay=(i*.7)+"s";
+        "#ff1744",
+        "#ff9800",
+        "#00c853",
+        "#2979ff",
+        "#d500f9"
 
-b.dataset.index=i;
+    ];
 
-b.onclick=function(e){
-e.stopPropagation();
-openMessage(Number(this.dataset.index));
-};
 
-document.body.appendChild(b);
+    for(let i=0;i<5;i++){
 
-setTimeout(()=>{
-b.remove();
-},12000);
+        const b =
+            document.createElement("div");
+
+
+        b.className = "balloon";
+
+
+        b.style.background =
+            colors[i];
+
+
+        b.style.color =
+            colors[i];
+
+
+        b.style.left =
+            (8 + i * 19) + "%";
+
+
+        b.style.animationDelay =
+            (i * 0.7) + "s";
+
+
+        b.dataset.index = i;
+
+
+        /* Click event */
+
+        b.addEventListener(
+            "click",
+            function(e){
+
+                e.stopPropagation();
+
+                openMessage(
+                    Number(this.dataset.index)
+                );
+
+            }
+        );
+
+
+        document.body.appendChild(b);
+
+
+        /* Remove balloon later */
+
+        setTimeout(function(){
+
+            if(b.parentNode){
+
+                b.remove();
+
+            }
+
+        },12000);
+
+    }
 
 }
-}
 
 
-/* message popup */
+
+/* =====================================================
+   OPEN MESSAGE POPUP
+===================================================== */
+
 function openMessage(index){
 
-let m=messages[index];
+    const message =
+        messages[index];
 
-document.getElementById("popupEmoji").innerHTML=m.emoji;
-document.getElementById("popupTitle").innerHTML=m.title;
-document.getElementById("popupText").innerHTML=m.text;
 
-document.getElementById("popup").classList.remove("hidden");
+    if(!message){
 
-confetti(25);
+        return;
+
+    }
+
+
+    document.getElementById(
+        "popupEmoji"
+    ).innerHTML =
+        message.emoji;
+
+
+    document.getElementById(
+        "popupTitle"
+    ).innerHTML =
+        message.title;
+
+
+    document.getElementById(
+        "popupText"
+    ).innerHTML =
+        message.text;
+
+
+    const popup =
+        document.getElementById("popup");
+
+
+    /* Make popup visible */
+
+    popup.classList.remove("hidden");
+
+    popup.style.display = "flex";
+
+
+    confetti(25);
+
 }
 
 
-/* popup continue */
+
+/* =====================================================
+   POPUP CONTINUE
+===================================================== */
+
 function closePopup(){
 
-document.getElementById("popup").classList.add("hidden");
+    const popup =
+        document.getElementById("popup");
+
+
+    /*
+       IMPORTANT:
+
+       Popup close hoga aur directly
+       Memories page open hogi.
+    */
+
+    popup.classList.add("hidden");
+
+    popup.style.display = "none";
+
+
+    /* Remove remaining balloons */
+
+    document
+        .querySelectorAll(".balloon")
+        .forEach(function(balloon){
+
+            balloon.remove();
+
+        });
+
+
+    /* Go to memories */
+
+    showPhotos();
 
 }
 
 
-/* photos */
+
+/* =====================================================
+   PHOTOS / MEMORIES
+===================================================== */
+
 function showPhotos(){
 
-go("s4");
+    go("s4");
 
-hearts(15);
+    hearts(15);
 
 }
 
 
-/* final */
+
+/* =====================================================
+   FINAL SCREEN
+===================================================== */
+
 function finalScreen(){
 
-go("s5");
+    go("s5");
 
-confetti(100);
-hearts(20);
+    confetti(100);
+
+    hearts(20);
 
 }
 
 
-/* celebration */
+
+/* =====================================================
+   CELEBRATE
+===================================================== */
+
 function celebrate(){
 
-confetti(220);
-hearts(40);
+    confetti(220);
 
-setTimeout(()=>{
-alert("🎉 HAPPY BIRTHDAY WABLE! ❤️🎂");
-},400);
+    hearts(40);
+
+
+    setTimeout(function(){
+
+        alert(
+            "🎉 HAPPY BIRTHDAY WABLE! ❤️🎂"
+        );
+
+    },400);
 
 }
 
 
-/* confetti */
+
+/* =====================================================
+   CONFETTI
+===================================================== */
+
 function confetti(amount){
 
-let colors=[
-"#ff1744",
-"#ffea00",
-"#00e676",
-"#2979ff",
-"#d500f9",
-"#ffffff"
-];
+    const colors = [
 
-for(let i=0;i<amount;i++){
+        "#ff1744",
+        "#ffea00",
+        "#00e676",
+        "#2979ff",
+        "#d500f9",
+        "#ffffff"
 
-let c=document.createElement("div");
+    ];
 
-c.className="confetti";
 
-c.style.left=Math.random()*100+"vw";
+    for(let i=0;i<amount;i++){
 
-c.style.background=
-colors[Math.floor(Math.random()*colors.length)];
+        const c =
+            document.createElement("div");
 
-c.style.animationDuration=
-(2+Math.random()*2)+"s";
 
-c.style.animationDelay=
-Math.random()*1.5+"s";
+        c.className =
+            "confetti";
 
-document.body.appendChild(c);
 
-setTimeout(()=>c.remove(),5000);
+        c.style.left =
+            Math.random() * 100 + "vw";
+
+
+        c.style.background =
+            colors[
+                Math.floor(
+                    Math.random() * colors.length
+                )
+            ];
+
+
+        c.style.animationDuration =
+            (2 + Math.random() * 2) + "s";
+
+
+        c.style.animationDelay =
+            Math.random() * 1.5 + "s";
+
+
+        document.body.appendChild(c);
+
+
+        setTimeout(function(){
+
+            if(c.parentNode){
+
+                c.remove();
+
+            }
+
+        },5000);
+
+    }
+
 }
-}
 
 
-/* hearts */
+
+/* =====================================================
+   HEARTS
+===================================================== */
+
 function hearts(amount){
 
-for(let i=0;i<amount;i++){
+    const heartTypes = [
 
-let h=document.createElement("div");
+        "❤️",
+        "💖",
+        "💕",
+        "💗"
 
-h.className="heart";
+    ];
 
-h.innerHTML=["❤️","💖","💕","💗"][Math.floor(Math.random()*4)];
 
-h.style.left=Math.random()*100+"vw";
+    for(let i=0;i<amount;i++){
 
-h.style.fontSize=(18+Math.random()*25)+"px";
+        const h =
+            document.createElement("div");
 
-h.style.animationDuration=(4+Math.random()*3)+"s";
 
-document.body.appendChild(h);
+        h.className =
+            "heart";
 
-setTimeout(()=>h.remove(),8000);
-}
+
+        h.innerHTML =
+            heartTypes[
+                Math.floor(
+                    Math.random() *
+                    heartTypes.length
+                )
+            ];
+
+
+        h.style.left =
+            Math.random() * 100 + "vw";
+
+
+        h.style.fontSize =
+            (18 + Math.random() * 25) + "px";
+
+
+        h.style.animationDuration =
+            (4 + Math.random() * 3) + "s";
+
+
+        document.body.appendChild(h);
+
+
+        setTimeout(function(){
+
+            if(h.parentNode){
+
+                h.remove();
+
+            }
+
+        },8000);
+
+    }
+
 }
 
 </script>
